@@ -125,6 +125,22 @@ class views_plugin_style_exhibit_json extends views_plugin_style {
       else {
         $items[$row->$base_field] = array_merge(array('label' => $row->$base_field, 'type' => $this->view->base_table), $item);
       }
+      foreach ($items[$row->$base_field] as $key => $value) 
+      {
+        if (!empty($key) && strlen($key)>=3 && substr($key,0,3)=='tid') {
+          // broads_debug_to_syslog("$key = $value"); 
+          // broads_debug_to_syslog(substr($key,0,3));
+          foreach($items[$row->$base_field][$key] as $id => $item){
+            //broads_debug_to_syslog($id, "id");
+            //broads_debug_to_syslog($item, "Item");
+            if(is_array($items[$row->$base_field][$key][$id])){
+              $items[$row->$base_field][$key][$id] =
+              $items[$row->$base_field][$key][$id]['name'];
+              //broads_debug_to_syslog($items[$row->$base_field][$key][$id], "Name");
+            }
+          }
+        }
+      }
     }
 
     module_load_include('inc', 'exhibit', 'exhibit.pages');

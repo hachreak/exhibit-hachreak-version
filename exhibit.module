@@ -340,6 +340,7 @@ function exhibit_exhibit_views() {
       'title'   => t('Map'),
       'class'   => 'Map',
       'href'    => variable_get('exhibit_extensions_map_api', EXHIBIT_MAP_JS_URL) . '?gmapkey=' . (module_exists('gmap') ?  gmap_get_key() : variable_get('exhibit_gmap_key', '')),
+      'gmap_key' => (module_exists('gmap') ?  gmap_get_key() : variable_get('exhibit_gmap_key', '')),
     ),
     'barchart'  => array(
       'title'   => t('Barchart'),

@@ -36,11 +36,11 @@ function exhibit_admin_settings() {
   // View settings
   $form['extensions'] = array('#type' => 'fieldset', '#title' => t('Exhibit extensions'), '#collapsible' => TRUE, '#collapsed' => TRUE, '#description' => 'Select the Exhibit extensions you wish to enable below.  You can also specify an alternate API location for each extension.');
   foreach (exhibit_exhibit_views() as $id => $view) {
-    if (isset($view->href)) {
+    if (isset($view['href'])) {
       $form['extensions']['exhibit_extensions_'. $id] = array('#type' => 'checkbox', '#title' => $view['title'], '#default_value' => variable_get('exhibit_extensions_'. $id, FALSE), '#description' => t(''));
       $form['extensions']['exhibit_extensions_'. $id .'_api'] = array('#type' => 'textfield', '#title' => t($view['title'] . ' API'), '#default_value' => variable_get('exhibit_extensions_'. $id .'_api', constant('EXHIBIT_'. strtoupper($id) .'_JS_URL')));
       if ($id == 'map') {
-        $form['extensions']['exhibit_gmap_key'] = array('#type' => 'textfield', '#title' => t('Google Maps API key'), '#default_value' => variable_get('exhibit_gmap_key', ''), '#description' => t('If you have the <a href="http://drupal.org/project/gmap">GMap</a> and/or <a href="http://drupal.org/project/keys">Keys API</a> modules installed and configured, you can leave this blank as Exhibit will pull the Google Maps API key used from <a href="/admin/settings/gmap">that configuration</a>.'));
+        $form['extensions']['exhibit_gmap_key'] = array('#type' => 'textfield', '#title' => t('Google Maps API key'), '#default_value' => $view['gmap_key'], '#description' => t('If you have the <a href="http://drupal.org/project/gmap">GMap</a> and/or <a href="http://drupal.org/project/keys">Keys API</a> modules installed and configured, you can leave this blank as Exhibit will pull the Google Maps API key used from <a href="/admin/settings/gmap">that configuration</a>.'));
       }
     }
   }
