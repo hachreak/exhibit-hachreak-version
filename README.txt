@@ -59,3 +59,4 @@ Co-maintained by Djun Kim <http://www.puregin.org/>
 Sponsored by MakaluMedia Group <http://www.makalumedia.com/>
 Sponsored by M.C. Dean, Inc. <http://www.mcdean.com/>
 Sponsored by SPAWAR <http://www.spawar.navy.mil/>
+Patched by Hachreak <http://www.hachreak.org/>
