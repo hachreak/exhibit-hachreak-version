@@ -134,8 +134,11 @@ class views_plugin_style_exhibit_json extends views_plugin_style {
             //broads_debug_to_syslog($id, "id");
             //broads_debug_to_syslog($item, "Item");
             if(is_array($items[$row->$base_field][$key][$id])){
+              $tid = $items[$row->$base_field][$key][$id]['tid'];
+              $name = $items[$row->$base_field][$key][$id]['name'];
               $items[$row->$base_field][$key][$id] =
-              $items[$row->$base_field][$key][$id]['name'];
+              i18nstrings("taxonomy:term:$tid:name", $name);
+//($items[$row->$base_field][$key][$id]['name']);
               //broads_debug_to_syslog($items[$row->$base_field][$key][$id], "Name");
             }
           }
