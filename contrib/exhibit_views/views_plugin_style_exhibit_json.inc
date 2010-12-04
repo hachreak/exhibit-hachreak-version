@@ -136,8 +136,16 @@ class views_plugin_style_exhibit_json extends views_plugin_style {
             if(is_array($items[$row->$base_field][$key][$id])){
               $tid = $items[$row->$base_field][$key][$id]['tid'];
               $name = $items[$row->$base_field][$key][$id]['name'];
-              $items[$row->$base_field][$key][$id] =
-              i18nstrings("taxonomy:term:$tid:name", $name);
+
+	      if(function_exists('i18nstrings'))                                          
+                $items[$row->$base_field][$key][$id] =                                    
+                  i18nstrings("taxonomy:term:$tid:name", $name);                          
+              else                                                                        
+                $items[$row->$base_field][$key][$id] =                                    
+                  ($items[$row->$base_field][$key][$id]['name']); 
+	      
+	      //$items[$row->$base_field][$key][$id] =
+              //i18nstrings("taxonomy:term:$tid:name", $name);
 //($items[$row->$base_field][$key][$id]['name']);
               //broads_debug_to_syslog($items[$row->$base_field][$key][$id], "Name");
             }
