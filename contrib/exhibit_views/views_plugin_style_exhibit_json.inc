@@ -150,7 +150,18 @@ class views_plugin_style_exhibit_json extends views_plugin_style {
               //broads_debug_to_syslog($items[$row->$base_field][$key][$id], "Name");
             }
           }
-        }
+	}
+
+	if (!empty($key) && strlen($key)>=5 && substr($key,0,5)=='label') {
+	  if(is_array($value) && count($value) > 0){
+            foreach($items[$row->$base_field][$key] as $id => $item){
+              if(is_array($items[$row->$base_field][$key][$id])){
+		$name = t($items[$row->$base_field][$key][$id]['name']);
+		$items[$row->$base_field][$key][$id] = $name;
+	      }
+	    }
+	  }else{ unset($items[$row->$base_field][$key]); }
+	}
       }
     }
 
