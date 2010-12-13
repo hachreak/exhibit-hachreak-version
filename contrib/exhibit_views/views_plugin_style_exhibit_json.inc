@@ -91,6 +91,12 @@ class views_plugin_style_exhibit_json extends views_plugin_style {
             $props[$id]['valueType'] = 'date';
         }
       }
+
+      // control if is a number
+      if($field->options['precision'] != ''){
+	// then set in property header: it's a number!
+        $props[$id]['valueType'] = 'number';
+      }
     }
 
     // Gather all rendered items
