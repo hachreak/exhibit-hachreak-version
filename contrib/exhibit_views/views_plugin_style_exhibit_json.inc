@@ -158,6 +158,7 @@ class views_plugin_style_exhibit_json extends views_plugin_style {
           }
 	}
 
+	// label -> identify attribute option (uc_attribute_single_views)
 	if (!empty($key) && strlen($key)>=5 && substr($key,0,5)=='label') {
 	  if(is_array($value) && count($value) > 0){
             foreach($items[$row->$base_field][$key] as $id => $item){
