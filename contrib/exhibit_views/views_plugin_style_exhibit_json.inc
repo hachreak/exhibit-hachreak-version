@@ -93,7 +93,7 @@ class views_plugin_style_exhibit_json extends views_plugin_style {
       }
 
       // control if is a number
-      if($field->options['precision'] != ''){
+      if($field->options['format'] == 'numeric'){
 	// then set in property header: it's a number!
         $props[$id]['valueType'] = 'number';
       }
